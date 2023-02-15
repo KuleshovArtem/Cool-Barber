@@ -1,0 +1,37 @@
+.about {
+    margin-top: 668px;
+    padding-top: 120px;
+    background: #3B322D;
+    min-height: 1209px;
+    &__wrapper {
+        margin-top: 60px;
+        display: flex;
+    }
+    &__column {
+        &:first-child {
+            margin-right: 20px;
+        }
+    }
+    &__small-group {
+        display: flex;
+        justify-content: space-between;
+        &:last-child {
+            margin-top: 20px;
+        }
+        &:first-child {
+            margin-bottom: 20px;
+        }
+    }
+    &__small-img {
+        gap: 20px;
+    }
+    img {
+        width: 100%;
+    }
+    &__buttons {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+    }
+
+}

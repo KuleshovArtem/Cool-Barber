@@ -1,0 +1,35 @@
+.button {
+    position: relative;
+    display: flex;
+    padding: 18px 51px;
+    width: 194px;
+    height: 68px;
+    border: none;
+    background: #FF6E40;
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    text-decoration-line: none;
+    color: #FFFFFF;
+    &:hover {
+        background-image: radial-gradient(33px 33px at 17px 17px, #251D1A 49%, transparent 52%);
+        background-size: 34px 34px;;
+        background-position: center center;
+        background-repeat: no-repeat; 
+        color: #FFFFFF;
+    }
+    &-big {
+        width: 432px;
+    }
+    &-transparent {
+        margin-left: 30px;
+        padding: 22px 48px;
+        width: 216px;
+        border: 1px solid #EFE7E2;
+        background-color:inherit;
+        font-family: 'Playfair Display';
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+}

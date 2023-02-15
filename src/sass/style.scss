@@ -1,0 +1,31 @@
+@import "libs/bootstrap-reboot.min";
+@import "libs//fonts";
+
+@import "base/variables";
+@import "base/mixins";
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0; 
+}
+.container {
+    width: 1180px;
+    margin: 0 auto;
+}
+body {
+    background: #3B322D;
+}
+
+@import "blocks/header";
+@import "blocks/promo";
+@import "blocks/button";
+@import "blocks/title";
+@import "blocks/about";
+@import "blocks/testimonials";
+
+
+
+//@import "blocks/media";

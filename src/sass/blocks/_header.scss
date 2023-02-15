@@ -1,0 +1,60 @@
+.header {
+    //position: relative;
+	height: 120px;
+    padding: 36px 0;
+    display: flex;
+    align-items: center;
+    background: #3B322D;
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        &__wrapper {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 0;
+            list-style-type: none;
+        }
+        &__link {
+            margin-left: 25px;
+            font-family: 'Fira Sans';
+            font-weight: 400;
+            font-size: 15px;
+            color: #EFE7E2;
+            text-decoration: none;
+        }
+    }
+    &__contacts{
+        display: flex;
+    }
+    &__contact-item {
+        margin-left: 42px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    img {
+        margin-left: 15px;
+    }
+    &__contact-descr {
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 135%;
+        text-align: right;
+        color: #EFE7E2;
+        span {
+            font-size: 18px;
+            line-height: 152%;
+            color:#FFFFFF;
+        }
+    }
+    &__logo {
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 15px;
+        color: #EFE7E2;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,64 @@
+.testimonials {
+    background: #3B322D;
+    padding: 120px 0;
+    min-height: 858px;
+    &__wrapper {
+        position: relative;
+        margin-top: 60px ;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: auto;
+        grid-auto-rows: auto;
+        column-gap: 20px;
+    }
+    &__item {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-auto-rows: auto;
+        row-gap: 24px;
+    }
+    &__img{
+        img{
+            width: 100%;
+        }
+    }
+    &__descr {
+        font-family: 'Fira Sans';
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 150%;
+        color: #FFFFFF;
+    }
+    &__text {
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: #FFFFFF;
+    }
+    &__link {
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 14px;
+        color: #FF6E40;
+        text-decoration-line: none;
+    }
+    &__slider-prev{
+        position: absolute;
+        content: '';
+        top: 123px;
+        left: -54px;
+        background-color:inherit;
+        border:none;
+    }
+    &__slider-next{
+        position: absolute;
+        content: '';
+        top: 123px;
+        right: -54px;
+        background-color:inherit;
+        border:none;
+    }
+    
+}
