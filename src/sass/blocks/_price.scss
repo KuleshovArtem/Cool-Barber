@@ -1,0 +1,67 @@
+.price {
+    background: #251D1A;
+    min-height: 1152px;
+    padding: 120px 0 256px 0;
+    &__wrapper {
+        //position: relative;
+        margin-top: 60px ;
+        display: grid;
+        grid-template: auto / repeat(4, auto);
+        grid-auto-rows: auto;
+        column-gap: 20px;
+    }
+    &__item {
+        display: grid;
+        grid-auto-rows: auto;
+        grid-template: auto / auto;
+        row-gap: 20px;
+    }
+    &__img{
+        img{
+            width: 100%;
+        }
+    }
+    &__descr {
+        font-family: 'Fira Sans';
+        font-weight: 500;
+        font-size: 30px;
+        color: #EFE7E2;
+    }
+    &__grid {
+        display: grid;
+        grid-template: auto / auto;
+        grid-auto-rows: auto;
+        row-gap: 10px;
+    }
+    &__inner{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto;
+    }
+    &__services {
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 16px;
+        color: #EFE7E2;
+    }
+    &__time {
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 14px;
+        text-align: right;
+        color: #B7AAA2;
+        &::after {
+            content: " min";
+        }
+    }
+    &__value {
+        font-family: 'Fira Sans';
+        font-weight: 700;
+        font-size: 16px;
+        text-align: right;
+        color: #FFFFFF;
+        &::before {
+            content: '$';
+        }
+    }
+}
