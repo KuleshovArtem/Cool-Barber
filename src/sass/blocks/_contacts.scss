@@ -1,0 +1,44 @@
+.contacts {
+    position: relative;
+    //min-height: 899px;
+    margin-top: 350px;
+    padding-bottom: 56px;
+    &__wrapper {
+        position: absolute;
+        content: '';
+        padding: 65px 38px 80px 57px;
+        width: 480px;
+        height: 530px;
+        top: 60px;
+        background: #251D1A;
+    }
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        margin-top: 34px;
+        gap: 25px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+    }
+    &__descr {
+        margin-left: 31px;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 21px;
+        color: #FFFFFF;
+        text-decoration-line: none;
+        &:hover {
+            color: #FFFFFF;
+        }
+    }
+    &__copyright {
+        margin-top: 57px;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 12px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+}

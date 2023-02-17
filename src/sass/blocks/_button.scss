@@ -32,4 +32,10 @@
         font-size: 14px;
         text-transform: uppercase;
     }
+    &-black {
+        background: #000000;
+        &:hover {
+            background-image: radial-gradient(33px 33px at 17px 17px, #FF6E40 49%, transparent 52%);
+        }
+    }
 }

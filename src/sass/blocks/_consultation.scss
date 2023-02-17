@@ -1,0 +1,84 @@
+.consultation {
+    position: relative;
+    &__wrapper {
+        position: absolute;
+        content: "";
+        width: 1180px;
+        height: 375px;
+        background: #FF6E40;
+        top: -145px;
+        padding: 70px 150px;
+    }
+    &__title {
+        font-family: 'Playfair Display';
+        font-weight: 900;
+        font-size: 36px;
+        text-align: center;
+        color: #000000;
+    }
+    &__descr {
+        margin-top: 12px;
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 21px;
+        text-align: center;
+        color: #3B322D;
+    }
+    &__form {
+        margin-top: 35px;
+        &-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    &__input {
+        display: block;
+        padding: 22px 20px;
+        width: 323px;
+        height: 68px;
+        //border: 1px solid #fff;
+        //border: 1px solid #000000;
+        background-color:inherit;
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 17px;
+        color: #FFFFFF;
+        outline: none;
+        &::placeholder {
+            outline: #fff;
+            color: #FFFFFF;
+            //background: #FF6E40;
+        }
+        &:focus{
+            border: 1px solid #fff;
+            outline: #fff;
+            //background: #FF6E40;
+        }
+        &:active {
+            border: 1px solid #fff;
+            outline: #fff;
+        }
+        &:placeholder-shown {
+            outline: #fff;
+            border:1px solid #000000;
+        }
+        
+    }
+    &__checkbox {
+        background-color:#000000;
+    }
+    &__approval {
+        margin-top: 24px;
+        text-align: center;
+        &-text {
+            display: inline-block;
+            font-family: 'Fira Sans';
+            font-weight: 400;
+            font-size: 13px;
+            color: #EFE7E2;
+        }
+
+    }
+
+    
+}

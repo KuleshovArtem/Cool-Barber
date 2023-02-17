@@ -32,11 +32,13 @@
         grid-template: auto / auto;
         grid-auto-rows: auto;
         row-gap: 10px;
+        border-right:#B7AAA2 solid 1px;
     }
     &__inner{
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 172px 44px 28px;
         grid-template-rows: auto;
+        column-gap:10px;
     }
     &__services {
         font-family: 'Fira Sans';
