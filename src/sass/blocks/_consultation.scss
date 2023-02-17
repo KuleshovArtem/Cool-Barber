@@ -36,37 +36,25 @@
         padding: 22px 20px;
         width: 323px;
         height: 68px;
-        //border: 1px solid #fff;
-        //border: 1px solid #000000;
-        background-color:inherit;
+        border: 1px solid #000000;
+        background: #FF6E40;
         font-family: 'Fira Sans';
         font-weight: 400;
         font-size: 17px;
         color: #FFFFFF;
         outline: none;
+
         &::placeholder {
             outline: #fff;
             color: #FFFFFF;
-            //background: #FF6E40;
         }
         &:focus{
             border: 1px solid #fff;
             outline: #fff;
-            //background: #FF6E40;
         }
-        &:active {
-            border: 1px solid #fff;
-            outline: #fff;
-        }
-        &:placeholder-shown {
-            outline: #fff;
-            border:1px solid #000000;
-        }
-        
     }
-    &__checkbox {
-        background-color:#000000;
-    }
+    // &__checkbox {
+    // }
     &__approval {
         margin-top: 24px;
         text-align: center;
