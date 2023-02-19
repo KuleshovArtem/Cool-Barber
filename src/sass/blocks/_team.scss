@@ -1,0 +1,70 @@
+.team {
+    &__wrapper{
+
+    }
+    &__poster {
+        padding: 40px 435px 63px 50px;
+        height: 400px;
+        background: linear-gradient(90deg, rgba(33, 24, 20, 0.57) 0%, rgba(38, 28, 24, 0.42) 100%), url('../img/team-bg.jpg') center/cover ;
+        &-title{
+            margin: 0;
+            font-family: 'Playfair Display';
+            font-weight: 900;
+            font-size: 70px;
+            line-height: 110%;
+            color: #FFFFFF;
+        }
+        &-descr {
+            width: 228px;
+            margin-top: 32px;
+            font-family: 'Fira Sans';
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 150%;
+            color: #EFE7E2;
+        }
+    }
+    &__masters{
+        
+    }
+    &__item{
+        margin-top: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__header{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 180px;
+        background: #251D1A;
+    }
+    &__name{
+        width: 250px;
+        font-family: 'Fira Sans';
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 125%;
+        color: #EFE7E2;
+    }
+    &__descr {
+        width: 280px;
+        font-family: 'Fira Sans';
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+        color: #B7AAA2;
+    }
+    &__gallery{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(2, auto);
+        grid-auto-rows: auto;
+        gap: 20px;
+    }
+
+
+}
