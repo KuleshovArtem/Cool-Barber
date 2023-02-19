@@ -1,5 +1,5 @@
 {
-  "menu": [
+  "testimonials": [
     {
       "img": "img/testimonials/foto1.jpg",
       "alt": "foto",
@@ -25,17 +25,30 @@
       "text": "Describe the feedback or end result the person received after interacting with you. What exactly did it give him. You can describe the result in numbers to be specific."
     },
     {
-      "img": "img/testimonials/foto4.jpg",
+      "img": "img/testimonials/foto1.jpg",
       "alt": "foto",
-      "descr": "5 person",
+      "descr": "Darrell Steward",
+      "text": "Describe the feedback or end result the person received after interacting with you. What exactly did it give him. You can describe the result in numbers to be specific."
+    },
+    {
+      "img": "img/testimonials/foto2.jpg",
+      "alt": "foto",
+      "descr": "Marvin McKinney",
+      "text": "Describe the feedback or end result the person received after interacting with you. What exactly did it give him. You can describe the result in numbers to be specific."
+    },
+    {
+      "img": "img/testimonials/foto3.jpg",
+      "alt": "foto",
+      "descr": "Ronald Richards",
       "text": "Describe the feedback or end result the person received after interacting with you. What exactly did it give him. You can describe the result in numbers to be specific."
     },
     {
       "img": "img/testimonials/foto4.jpg",
       "alt": "foto",
-      "descr": "6 person",
+      "descr": "Cody Fisher",
       "text": "Describe the feedback or end result the person received after interacting with you. What exactly did it give him. You can describe the result in numbers to be specific."
     }
+    
   ],
   "requests": [
   

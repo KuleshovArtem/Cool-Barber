@@ -12,9 +12,12 @@
     padding: 0; 
 }
 .container {
-    position:relative;
+    //position:relative;
     width: 1180px;
     margin: 0 auto;
+}
+.hide {
+    display: none;
 }
 body {
     background: #3B322D;
@@ -29,6 +32,7 @@ body {
 @import "blocks/price";
 @import "blocks/consultation";
 @import "blocks/contacts";
+@import "blocks/footer";
 
 
 

@@ -1,15 +1,23 @@
 .header {
-    //position: relative;
-	height: 120px;
-    padding: 36px 0;
-    display: flex;
-    align-items: center;
-    background: #3B322D;
+    position: relative;
+    height: 120px;
+    //padding: 36px 0;
+    // display: flex;
+    // align-items: center;
+    // background: #3B322D;
     .menu {
-        display: flex;
-        justify-content: space-between;
-        align-items: center; 
+        position: fixed;
+        height: 120px;
+        width: 100%;
+        z-index: 2;
+        background: #3B322D;
         &__wrapper {
+            height: 120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+        }
+        &__inner {
             display: flex;
             justify-content: space-around;
             align-items: center;

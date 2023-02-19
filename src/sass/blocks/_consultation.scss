@@ -8,6 +8,11 @@
         background: #FF6E40;
         top: -145px;
         padding: 70px 150px;
+        z-index: 1 ;
+        &-bottom {
+            transition: 1.5s all;
+            top: 740px;
+        }
     }
     &__title {
         font-family: 'Playfair Display';
