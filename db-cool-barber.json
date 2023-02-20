@@ -50,6 +50,51 @@
     }
     
   ],
+  "team": [
+    {
+      "avatar": "img/team/DevonLane/avatar.jpg",
+      "name": "Devon Lane",
+      "descrMaster": "Description of the master, his education, achievements and merits",
+      "descrStyle": "Description of the styles and specializations of the master",
+      "work1": "img/team/DevonLane/work1.jpg",
+      "work2": "img/team/DevonLane/work2.jpg",
+      "work3": "img/team/DevonLane/work3.jpg",
+      "work4": "img/team/DevonLane/work4.jpg",
+      "work5": "img/team/DevonLane/work5.jpg",
+      "work6": "img/team/DevonLane/work6.jpg",
+      "work7": "img/team/DevonLane/work7.jpg",
+      "work8": "img/team/DevonLane/work8.jpg"
+    },
+    {
+      "avatar": "img/team/RonaldRichards/avatar.jpg",
+      "name": "Ronald Richards",
+      "descrMaster": "Description of the master, his education, achievements and merits",
+      "descrStyle": "Description of the styles and specializations of the master",
+      "work1": "img/team/RonaldRichards/work1.jpg",
+      "work2": "img/team/RonaldRichards/work2.jpg",
+      "work3": "img/team/RonaldRichards/work3.jpg",
+      "work4": "img/team/RonaldRichards/work4.jpg",
+      "work5": "img/team/RonaldRichards/work5.jpg",
+      "work6": "img/team/RonaldRichards/work6.jpg",
+      "work7": "img/team/RonaldRichards/work7.jpg",
+      "work8": "img/team/RonaldRichards/work8.jpg"
+    },
+    {
+      "avatar": "img/team/JaneCooper/avatar.jpg",
+      "name": "Jane Cooper",
+      "descrMaster": "Description of the master, his education, achievements and merits",
+      "descrStyle": "Description of the styles and specializations of the master",
+      "work1": "img/team/JaneCooper/work1.jpg",
+      "work2": "img/team/JaneCooper/work2.jpg",
+      "work3": "img/team/JaneCooper/work3.jpg",
+      "work4": "img/team/JaneCooper/work4.jpg",
+      "work5": "img/team/JaneCooper/work5.jpg",
+      "work6": "img/team/JaneCooper/work6.jpg",
+      "work7": "img/team/JaneCooper/work7.jpg",
+      "work8": "img/team/JaneCooper/work8.jpg"
+    }
+
+  ],
   "requests": [
   
   ]
