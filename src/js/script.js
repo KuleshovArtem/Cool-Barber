@@ -9,7 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
         blockContacts = document.querySelector('.contacts'),
         btnContact = document.querySelector('[data-contacts]'),
         blockTeam = document.querySelector('.team'),
-        btnTeam = document.querySelectorAll('[data-team]');
+        btnTeam = document.querySelectorAll('[data-team]'),
+        btnShowPortfolio = document.querySelectorAll('.button-team');
 
 
     function hideBlock() {
@@ -18,9 +19,9 @@ window.addEventListener('DOMContentLoaded', () => {
             blockAbout.classList.add('hide');
             blockTestimonials.classList.add('hide');
             blockPrice.classList.add('hide');
-        }
-        
+        } 
     }
+
     function showBlock () {
         if(blockPromo.classList.contains('hide')){
             blockPromo.classList.remove('hide');
@@ -29,7 +30,6 @@ window.addEventListener('DOMContentLoaded', () => {
             blockPrice.classList.remove('hide');
             blockTeam.classList.add('hide');
         }
-        
     }
     
     btnLogo.addEventListener('click', () => showBlock());
@@ -42,6 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
         blockContacts.style.height = '1100px';
         formConsultation.classList.add('consultation__wrapper-bottom');
         hideBlock();
+        blockTeam.classList.add('hide');
     }
     
     btnContact.addEventListener('click', () => showContacts());
@@ -68,61 +69,6 @@ window.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".testimonials__inner").append(element); 
         });
     }
-   
-    function createTeam(data) {
-        data.forEach(({avatar, name, descrMaster, descrStyle, work1, work2, work3, work4, work5, work6, work7, work8 }) => {
-            const element = document.createElement('div');
-            element.classList.add('team__item');
-            element.innerHTML = `
-            <div class="team__header">
-                <div class="team__avatar">
-                    <img src=${avatar} alt="avatar">
-                </div>
-                <div class="team__name">${name}</div>
-                <div class="team__descr">${descrMaster}</div>
-                <div class="team__descr">${descrStyle}</div>
-            </div>
-            <div class="team__gallery">
-                <div class="team__gallery-item"><img src=${work1} alt="work"></div>
-                <div class="team__gallery-item"><img src=${work2} alt="work"></div>
-                <div class="team__gallery-item"><img src=${work3} alt="work"></div>
-                <div class="team__gallery-item"><img src=${work4} alt="work"></div>
-                <div class="team__gallery-item"><img src=${work5} alt="work"></div>
-                <div class="team__gallery-item"><img src=${work6} alt="work"></div>
-                <div class="team__gallery-item"><img src=${work7} alt="work"></div>
-                <div class="team__gallery-item"><img src=${work8} alt="work"></div>
-            </div>
-            <button class="button button-team">See all works</button>
-            `;
-            document.querySelector('.team__masters').append(element);
-        });
-    }
-
-    getData('http://localhost:3000/testimonials')
-        .then(data => createTestimonials(data))
-        .catch(() => console.error('error'))  // написать функционал вывода на страницу ошибки
-        .then(() => slider());
-
-
-    getData('http://localhost:3000/team')
-        .then(data => createTeam(data))
-        .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
-
-    function showBlockTeam () {
-        getData('http://localhost:3000/team')
-            .then(()=> {
-                //hideBlock();
-                //blockTeam.classList.remove('hide');
-               // window.scrollTo(0, 0);
-            })
-            //.then(data => createTeam(data))
-            .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
-    }
-
-    btnTeam.forEach(i => {
-        i.addEventListener('click', () => showBlockTeam());
-    });
-
 
 //slider
     function slider () {
@@ -156,6 +102,91 @@ window.addEventListener('DOMContentLoaded', () => {
             slidesField.style.transform = `translateX(-${offset}px)`;
         });
     }
+
+    getData('http://localhost:3000/testimonials')
+        .then(data => createTestimonials(data))
+        .catch(() => console.error('error'))  // написать функционал вывода на страницу ошибки
+        .then(() => slider());
+        
+
+    function createTeam(data) {
+        data.forEach(({avatar, name, descrMaster, descrStyle, works }, i) => {
+            const element = document.createElement('div');
+            element.classList.add('team__item');
+            element.innerHTML = `
+            <div class="team__header">
+                <div class="team__avatar">
+                    <img src=${avatar} alt="avatar">
+                </div>
+                <div class="team__name">${name}</div>
+                <div class="team__descr">${descrMaster}</div>
+                <div class="team__descr">${descrStyle}</div>
+            </div>
+            <div class="team__gallery"></div>
+            <button class="button button-team">See all works</button>
+            `;
+            document.querySelector('.team__masters').append(element); 
+
+            
+            works.forEach((work, e) => {
+                if(e < 8) {
+                    const gallaryItem = document.createElement('div');
+                    gallaryItem.classList.add("team__gallery-item");
+                    gallaryItem.innerHTML = `
+                        <img src=${work} alt="work">
+                    `;
+                    document.querySelectorAll('.team__gallery')[i].append(gallaryItem);
+                }
+                
+
+            });
+            
+
+
+            // <div class="team__gallery">
+            //     <div class="team__gallery-item"><img src=${work1} alt="work"></div>
+            //     <div class="team__gallery-item"><img src=${work2} alt="work"></div>
+            //     <div class="team__gallery-item"><img src=${work3} alt="work"></div>
+            //     <div class="team__gallery-item"><img src=${work4} alt="work"></div>
+            //     <div class="team__gallery-item"><img src=${work5} alt="work"></div>
+            //     <div class="team__gallery-item"><img src=${work6} alt="work"></div>
+            //     <div class="team__gallery-item"><img src=${work7} alt="work"></div>
+            //     <div class="team__gallery-item"><img src=${work8} alt="work"></div>
+            // </div>
+            // <button class="button button-team">See all works</button>
+        });
+    }
+
+
+
+    function showBlockTeam () {
+        getData('http://localhost:3000/team')
+            .then(data => {
+                if(!document.querySelector('.team__item')) {
+                    createTeam(data);
+                }
+            })
+            .then(()=> {
+                hideBlock();
+                blockTeam.classList.remove('hide');
+                window.scrollTo(0, 0);
+            })
+            .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+    }
+
+    btnTeam.forEach(i => {
+        i.addEventListener('click', () => showBlockTeam());
+    });
+
+
+    // function ShowPortfolio () {
+
+    // }
+
+    // btnShowPortfolio.forEach(btn => {
+    //     btn.addEventListener('Click', () => )
+    // });
+
 
     
    
