@@ -113,6 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
         data.forEach(({avatar, name, descrMaster, descrStyle, works }, i) => {
             const element = document.createElement('div');
             element.classList.add('team__item');
+
             element.innerHTML = `
             <div class="team__header">
                 <div class="team__avatar">
@@ -123,11 +124,15 @@ window.addEventListener('DOMContentLoaded', () => {
                 <div class="team__descr">${descrStyle}</div>
             </div>
             <div class="team__gallery"></div>
-            <button class="button button-team">See all works</button>
+            <button class="button button-team" data-buttonTeam>See all works</button>
             `;
             document.querySelector('.team__masters').append(element); 
+        });
+    }
 
-            
+    
+    function showGalleryItem (data) {
+        data.forEach(({works}, i) => {
             works.forEach((work, e) => {
                 if(e < 8) {
                     const gallaryItem = document.createElement('div');
@@ -136,34 +141,17 @@ window.addEventListener('DOMContentLoaded', () => {
                         <img src=${work} alt="work">
                     `;
                     document.querySelectorAll('.team__gallery')[i].append(gallaryItem);
-                }
-                
-
+                }  
             });
-            
-
-
-            // <div class="team__gallery">
-            //     <div class="team__gallery-item"><img src=${work1} alt="work"></div>
-            //     <div class="team__gallery-item"><img src=${work2} alt="work"></div>
-            //     <div class="team__gallery-item"><img src=${work3} alt="work"></div>
-            //     <div class="team__gallery-item"><img src=${work4} alt="work"></div>
-            //     <div class="team__gallery-item"><img src=${work5} alt="work"></div>
-            //     <div class="team__gallery-item"><img src=${work6} alt="work"></div>
-            //     <div class="team__gallery-item"><img src=${work7} alt="work"></div>
-            //     <div class="team__gallery-item"><img src=${work8} alt="work"></div>
-            // </div>
-            // <button class="button button-team">See all works</button>
-        });
+        }); 
     }
-
-
 
     function showBlockTeam () {
         getData('http://localhost:3000/team')
-            .then(data => {
+            .then(data => {  
                 if(!document.querySelector('.team__item')) {
                     createTeam(data);
+                    showGalleryItem(data);
                 }
             })
             .then(()=> {
@@ -178,14 +166,32 @@ window.addEventListener('DOMContentLoaded', () => {
         i.addEventListener('click', () => showBlockTeam());
     });
 
-
-    // function ShowPortfolio () {
-
-    // }
-
     // btnShowPortfolio.forEach(btn => {
-    //     btn.addEventListener('Click', () => )
+    //     btn.addEventListener('click', () => {
+    //         console.log('ok');
+    //         getData('http://localhost:3000/team')
+    //         .then(data => { 
+    //             showGalleryItem(data); 
+    //         })
+    //         .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+    //     });
     // });
+
+    blockTeam.addEventListener('click', (e) => {
+        if(e.target.tagName == "BUTTON") {
+            console.dir(e.target);
+            getData('http://localhost:3000/team')
+            .then(data => { 
+                showGalleryItem(data); 
+            })
+            .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+        }
+        
+    });
+
+
+
+
 
 
     
