@@ -1,9 +1,11 @@
 window.addEventListener('DOMContentLoaded', () => {
     const 
-        btnLogo = document.querySelector('[data-main]'),
+        btnLogo = document.querySelector('[data-main]'), //объеденить одним дата атрибутом main сделать 1 обработчик
         blockPromo = document.querySelector('.promo'),
         blockAbout = document.querySelector('.about'),
+        btnAbout = document.querySelector('[data-about]'),   //объеденить одним дата атрибутом main сделать 1 обработчик
         blockTestimonials = document.querySelector('.testimonials'),
+        btnTestimonials = document.querySelector('[data-testimonials]'), //объеденить одним дата атрибутом main сделать 1 обработчик
         blockPrice = document.querySelector('.price'),
         blockConsultation = document.querySelector('.consultation'),
         blockContacts = document.querySelector('.contacts'),
@@ -29,10 +31,18 @@ window.addEventListener('DOMContentLoaded', () => {
             blockTestimonials.classList.remove('hide');
             blockPrice.classList.remove('hide');
             blockTeam.classList.add('hide');
+
         }
     }
-    
-    btnLogo.addEventListener('click', () => showBlock());
+    //button menu 
+    btnLogo.addEventListener('click', (e) => {
+        showBlock();
+        document.querySelectorAll('.team__item').forEach(i => i.remove());
+        
+
+    });
+    btnAbout.addEventListener('click', () => showBlock());
+    btnTestimonials.addEventListener('click', () => showBlock());
 
     // show form
     function  showContacts () {
@@ -113,7 +123,6 @@ window.addEventListener('DOMContentLoaded', () => {
         data.forEach(({avatar, name, descrMaster, descrStyle, works }, i) => {
             const element = document.createElement('div');
             element.classList.add('team__item');
-
             element.innerHTML = `
             <div class="team__header">
                 <div class="team__avatar">
@@ -123,27 +132,39 @@ window.addEventListener('DOMContentLoaded', () => {
                 <div class="team__descr">${descrMaster}</div>
                 <div class="team__descr">${descrStyle}</div>
             </div>
-            <div class="team__gallery"></div>
+            <div class="team__gallery" data-gallery=${i}></div>
             <button class="button button-team" data-buttonTeam>See all works</button>
             `;
             document.querySelector('.team__masters').append(element); 
         });
     }
 
-    
-    function showGalleryItem (data) {
-        data.forEach(({works}, i) => {
-            works.forEach((work, e) => {
-                if(e < 8) {
+    function showGalleryItem (data, key) {
+        if(key) {
+            data[key].works.forEach((item, e) => {
+                if(e >= 8) {
                     const gallaryItem = document.createElement('div');
                     gallaryItem.classList.add("team__gallery-item");
                     gallaryItem.innerHTML = `
-                        <img src=${work} alt="work">
+                        <img src=${item} alt="work">
                     `;
-                    document.querySelectorAll('.team__gallery')[i].append(gallaryItem);
-                }  
-            });
-        }); 
+                    document.querySelectorAll('.team__gallery')[key].append(gallaryItem);
+                }
+            }); 
+        } else {
+            for( let i = 0; i < data.length; i++) {
+                data[i].works.forEach((item, e) => {
+                    if(e < 8) {
+                        const gallaryItem = document.createElement('div');
+                        gallaryItem.classList.add("team__gallery-item");
+                        gallaryItem.innerHTML = `
+                            <img src=${item} alt="work">
+                        `;
+                        document.querySelectorAll('.team__gallery')[i].append(gallaryItem);
+                    }
+                });              
+            }
+        }
     }
 
     function showBlockTeam () {
@@ -166,37 +187,22 @@ window.addEventListener('DOMContentLoaded', () => {
         i.addEventListener('click', () => showBlockTeam());
     });
 
-    // btnShowPortfolio.forEach(btn => {
-    //     btn.addEventListener('click', () => {
-    //         console.log('ok');
-    //         getData('http://localhost:3000/team')
-    //         .then(data => { 
-    //             showGalleryItem(data); 
-    //         })
-    //         .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
-    //     });
-    // });
 
     blockTeam.addEventListener('click', (e) => {
+        let key = e.target.parentElement.children[1].attributes[1].nodeValue;
+
         if(e.target.tagName == "BUTTON") {
-            console.dir(e.target);
+            
             getData('http://localhost:3000/team')
             .then(data => { 
-                showGalleryItem(data); 
+                showGalleryItem(data, key);
             })
+            .then(e.target.remove())
             .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
         }
         
     });
 
-
-
-
-
-
-    
-   
-
-   
-
 });
+
+
