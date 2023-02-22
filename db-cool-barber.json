@@ -97,15 +97,7 @@
         "img/team/RonaldRichards/work6.jpg",
         "img/team/RonaldRichards/work7.jpg",
         "img/team/RonaldRichards/work8.jpg"
-      ],
-      "work1": "img/team/RonaldRichards/work1.jpg",
-      "work2": "img/team/RonaldRichards/work2.jpg",
-      "work3": "img/team/RonaldRichards/work3.jpg",
-      "work4": "img/team/RonaldRichards/work4.jpg",
-      "work5": "img/team/RonaldRichards/work5.jpg",
-      "work6": "img/team/RonaldRichards/work6.jpg",
-      "work7": "img/team/RonaldRichards/work7.jpg",
-      "work8": "img/team/RonaldRichards/work8.jpg"
+      ]
     },
     {
       "avatar": "img/team/JaneCooper/avatar.jpg",
@@ -129,18 +121,25 @@
         "img/team/JaneCooper/work6.jpg",
         "img/team/JaneCooper/work7.jpg",
         "img/team/JaneCooper/work8.jpg"
-      ],
-      "work1": "img/team/JaneCooper/work1.jpg",
-      "work2": "img/team/JaneCooper/work2.jpg",
-      "work3": "img/team/JaneCooper/work3.jpg",
-      "work4": "img/team/JaneCooper/work4.jpg",
-      "work5": "img/team/JaneCooper/work5.jpg",
-      "work6": "img/team/JaneCooper/work6.jpg",
-      "work7": "img/team/JaneCooper/work7.jpg",
-      "work8": "img/team/JaneCooper/work8.jpg"
+      ]
     }
-
   ],
+  "about": [
+    {
+      "title": "About Us",
+      "descr": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt",
+      "picturesBig": [
+        "img/about/big1.jpg",
+        "img/about/big2.jpg"
+      ],
+      "picturesSmall": [
+        "img/about/small1.jpg",
+        "img/about/small2.jpg",
+        "img/about/small3.jpg",
+        "img/about/small4.jpg"
+      ]
+    }
+  ], 
   "requests": [
   
   ]

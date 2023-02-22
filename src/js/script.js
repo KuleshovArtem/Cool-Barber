@@ -2,17 +2,20 @@ window.addEventListener('DOMContentLoaded', () => {
     const 
         btnLogo = document.querySelector('[data-main]'), //объеденить одним дата атрибутом main сделать 1 обработчик
         blockPromo = document.querySelector('.promo'),
+        btnPromo = document.querySelector('[data-promoBtn]'),
         blockAbout = document.querySelector('.about'),
         btnAbout = document.querySelector('[data-about]'),   //объеденить одним дата атрибутом main сделать 1 обработчик
         blockTestimonials = document.querySelector('.testimonials'),
         btnTestimonials = document.querySelector('[data-testimonials]'), //объеденить одним дата атрибутом main сделать 1 обработчик
         blockPrice = document.querySelector('.price'),
         blockConsultation = document.querySelector('.consultation'),
+        formConsultation = document.querySelector('.consultation__wrapper'),
         blockContacts = document.querySelector('.contacts'),
         btnContact = document.querySelector('[data-contacts]'),
         blockTeam = document.querySelector('.team'),
         btnTeam = document.querySelectorAll('[data-team]'),
         btnShowPortfolio = document.querySelectorAll('.button-team');
+
 
 
     function hideBlock() {
@@ -31,7 +34,8 @@ window.addEventListener('DOMContentLoaded', () => {
             blockTestimonials.classList.remove('hide');
             blockPrice.classList.remove('hide');
             blockTeam.classList.add('hide');
-
+            blockContacts.classList.remove('contacts-show-consultation');
+            formConsultation.classList.remove('consultation__wrapper-below');
         }
     }
     //button menu 
@@ -44,18 +48,19 @@ window.addEventListener('DOMContentLoaded', () => {
     btnAbout.addEventListener('click', () => showBlock());
     btnTestimonials.addEventListener('click', () => showBlock());
 
+    btnPromo.addEventListener('click', () => {
+        document.documentElement.scrollTop = '4490';
+    });
+
+    btnContact.addEventListener('click', () => showContacts());
+
     // show form
     function  showContacts () {
-        const formConsultation = document.querySelector('.consultation__wrapper');
-
-        blockContacts.style.marginTop= '0px';
-        blockContacts.style.height = '1100px';
-        formConsultation.classList.add('consultation__wrapper-bottom');
+        blockContacts.classList.add('contacts-show-consultation');
+        formConsultation.classList.add('consultation__wrapper-below');
         hideBlock();
         blockTeam.classList.add('hide');
-    }
-    
-    btnContact.addEventListener('click', () => showContacts());
+    } 
 
     // функция получения данных с сервера 
     const getData = async (url) => {
@@ -124,16 +129,16 @@ window.addEventListener('DOMContentLoaded', () => {
             const element = document.createElement('div');
             element.classList.add('team__item');
             element.innerHTML = `
-            <div class="team__header">
-                <div class="team__avatar">
-                    <img src=${avatar} alt="avatar">
+                <div class="team__header">
+                    <div class="team__avatar">
+                        <img src=${avatar} alt="avatar">
+                    </div>
+                    <div class="team__name">${name}</div>
+                    <div class="team__descr">${descrMaster}</div>
+                    <div class="team__descr">${descrStyle}</div>
                 </div>
-                <div class="team__name">${name}</div>
-                <div class="team__descr">${descrMaster}</div>
-                <div class="team__descr">${descrStyle}</div>
-            </div>
-            <div class="team__gallery" data-gallery=${i}></div>
-            <button class="button button-team" data-buttonTeam>See all works</button>
+                <div class="team__gallery" data-gallery=${i}></div>
+                <button class="button button-team" data-buttonTeam>See all works</button> 
             `;
             document.querySelector('.team__masters').append(element); 
         });
@@ -202,6 +207,60 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         
     });
+
+    //about
+
+    function showAbout (data) {
+        data.forEach(({title, descr, picturesBig, picturesSmall}) => {
+            const element = document.createElement('div');
+            element.classList.add('about__box');
+            element.innerHTML = `
+                <div class="container">
+                    <h2 class="title">${title}</h2>
+                    <h3 class="subtitle">${descr}</h3>
+                    <div class="about__wrapper">
+                        <div class="about__column">
+                            <div class="about__big-img">
+                                <img src=${picturesBig[0]} alt="barber">
+                            </div>
+                            <div class="about__small-group">
+                                <div class="about__small-img">
+                                    <img src=${picturesSmall[0]} alt="barber">
+                                </div>
+                                <div class="about__small-img">
+                                    <img src=${picturesSmall[1]} alt="barber">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about__column">
+                            <div class="about__small-group">
+                                <div class="about__small-img">
+                                    <img src=${picturesSmall[2]} alt="barber">
+                                </div>
+                                <div class="about__small-img">
+                                    <img src=${picturesSmall[3]} alt="barber">
+                                </div>
+                            </div>
+                            <div class="about__big-img">
+                                <img src=${picturesBig[1]} alt="barber">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about__buttons">
+                        <a class="button button-big">Our masters and their masterpieces</a>
+                        <a class="button button-transparent">Our Instagram</a>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.about').append(element);
+        });
+    }
+    
+    getData('http://localhost:3000/about')
+        .then(data => showAbout(data))
+        .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+
+    
 
 });
 
