@@ -48,7 +48,6 @@
       "descr": "Cody Fisher",
       "text": "Describe the feedback or end result the person received after interacting with you. What exactly did it give him. You can describe the result in numbers to be specific."
     }
-    
   ],
   "team": [
     {
@@ -56,7 +55,7 @@
       "name": "Devon Lane",
       "descrMaster": "Description of the master, his education, achievements and merits",
       "descrStyle": "Description of the styles and specializations of the master",
-      "works" :[
+      "works": [
         "img/team/DevonLane/work1.jpg",
         "img/team/DevonLane/work2.jpg",
         "img/team/DevonLane/work3.jpg",
@@ -80,7 +79,7 @@
       "name": "Ronald Richards",
       "descrMaster": "Description of the master, his education, achievements and merits",
       "descrStyle": "Description of the styles and specializations of the master",
-      "works" :[
+      "works": [
         "img/team/RonaldRichards/work1.jpg",
         "img/team/RonaldRichards/work2.jpg",
         "img/team/RonaldRichards/work3.jpg",
@@ -104,7 +103,7 @@
       "name": "Jane Cooper",
       "descrMaster": "Description of the master, his education, achievements and merits",
       "descrStyle": "Description of the styles and specializations of the master",
-      "works" :[
+      "works": [
         "img/team/JaneCooper/work1.jpg",
         "img/team/JaneCooper/work2.jpg",
         "img/team/JaneCooper/work3.jpg",
@@ -139,8 +138,40 @@
         "img/about/small4.jpg"
       ]
     }
-  ], 
+  ],
+  "promo": {
+    "poster": {
+      "title": "Men’s Barbershop in The Middle East",
+      "descr": "THE HIGHEST RATED",
+      "text": "Text that is placed at the bottom of the heading to reveal details"
+    },
+    "features":[
+      {
+        "img": "icons/promo/barber-shop.svg",
+        "altImg": "barber-shop",
+        "descr": "Briefly describe the benefit",
+        "text": "Long text, in two lines, for clarity and detail"
+      },
+      {
+        "img": "icons/promo/hair-gel.svg",
+        "altImg": "hair-gel",
+        "descr": "Briefly describe the benefit",
+        "text": "Long text, in two lines, for clarity and detail"
+      },
+      {
+        "img": "icons/promo/beard.svg",
+        "altImg": "beard",
+        "descr": "Briefly describe the benefit",
+        "text": "Long text, in two lines, for clarity and detail"
+      }
+    ]
+  },
   "requests": [
-  
+    {
+      "phone": "+79094567895",
+      "email": "fewfwe@red.ru",
+      "checkbox": "on",
+      "id": 1
+    }
   ]
 }

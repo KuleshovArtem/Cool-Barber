@@ -93,7 +93,7 @@ const
     blockAbout = document.querySelector('.about'),
     blockTestimonials = document.querySelector('.testimonials'),
     blockPrice = document.querySelector('.price'),
-    //blockConsultation = document.querySelector('.consultation'),
+    
     formConsultation = document.querySelector('.consultation__wrapper'),
     blockContacts = document.querySelector('.contacts'),
     
@@ -116,7 +116,7 @@ function showBlock () {
         blockPrice.classList.remove('hide');
         blockTeam.classList.add('hide');
         blockContacts.classList.remove('contacts-show-consultation');
-        formConsultation.classList.remove('consultation__wrapper-below');
+        //formConsultation.classList.remove('consultation__wrapper-below'); // генерация верстки в функции ошибка
     }
 }
     // show form
@@ -126,7 +126,7 @@ function form () {
 
     function  showContacts () {
         blockContacts.classList.add('contacts-show-consultation');
-        formConsultation.classList.add('consultation__wrapper-below');
+        //formConsultation.classList.add('consultation__wrapper-below'); не работает 
         hideBlock();
         blockTeam.classList.add('hide');
     } 
@@ -145,13 +145,186 @@ function menu () {
         });
     });
 
-    btnPromo.addEventListener('click', () => {
-        document.documentElement.scrollTop = '4490';
-    });
+    // btnPromo.addEventListener('click', () => {
+    //     document.documentElement.scrollTop = '4490';
+    // });
+    // в блоке promo
 }
 
 
 
+
+/***/ }),
+
+/***/ "./src/js/modules/consultation.js":
+/*!****************************************!*\
+  !*** ./src/js/modules/consultation.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./src/js/services/services.js");
+
+
+function consultation () {
+
+    function showConsultation () {
+        const element = document.createElement('div');
+        element.classList.add('consultation__box');
+        element.innerHTML = `
+            <div class="container">
+                <div class="consultation__wrapper">
+                    <h2 class="consultation__title">Get in consultation with our expert barbers</h2>
+                    <div class="consultation__descr">Expand Call-to-Action Details</div>
+                    <form action="#" class="consultation__form">
+                        <div class="consultation__form-wrapper">
+                            <input required type="phone" name="phone" class="consultation__input" placeholder="+1 (___) ___-__-__" >
+                            <input required type="email" name="email" class="consultation__input" placeholder="Email" >
+                            <button class="button button-black">Book now</button>
+                        </div>
+                        <div class="consultation__approval">
+                            <label for="">
+                                <input required type="checkbox" name="checkbox" checked class="consultation__checkbox">
+                                <div class="consultation__approval-text">By clicking on the button, you agree to the <a href="#">terms of processing personal data</a></div>
+                            </label>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        `;
+        document.querySelector('.consultation').append(element);
+    }
+
+    showConsultation();
+
+    const form = document.querySelector('form');
+
+    postDataConsultation ();
+
+    function postDataConsultation () { 
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log(e);
+
+            const formData = new FormData(form);
+
+            const object = {};
+            formData.forEach(function(value, key) {
+                object[key] = value;
+            });       
+
+            (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.postData)('http://localhost:3000/requests', JSON.stringify(object))
+                .finally(() => {
+                    form.reset();
+                });
+        });
+    }
+    
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (consultation);
+
+/***/ }),
+
+/***/ "./src/js/modules/promo.js":
+/*!*********************************!*\
+  !*** ./src/js/modules/promo.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./src/js/services/services.js");
+
+
+function promo () {
+
+    function showPoster(data) {
+        const {title, descr, text} = data.poster;  
+        const element = document.createElement('section');
+        element.classList.add('promo');
+        element.innerHTML = `
+            <div class="container">
+                <div class="poster">
+                    <div class="poster__wrapper">
+                        <h1 class="poster__title">${title}</h1>
+                        <div class="poster__content">
+                            <div class="poster__descr">${descr}</div>
+                            <div class="poster__text">${text}</div>
+                        </div>
+                    </div>
+                    <a class="button" data-promoBtn >Book now</a>
+                </div>
+            </div>
+            <div class="features">
+                <div class="container">
+                    <div class="features__wrapper">
+                        
+                    </div>   
+                </div> 
+            </div>
+        `;
+        document.querySelector('header').insertAdjacentElement("afterend", element);        
+    }
+
+    
+    function showFeatures (data) {
+        const {features} = data;
+        features.forEach(({img, altImg, descr, text}) => {
+            const element = document.createElement('div');
+            element.classList.add('features__item');
+            element.innerHTML = `
+                <div class="features__img">
+                    <img src=${img} alt=${altImg}>
+                </div>
+                <div class="features__descr">${descr}</div>
+                <div class="features__text">${text}</div>
+            `;
+            document.querySelector('.features__wrapper').append(element);  
+        }); 
+    }
+
+    (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/promo')
+    .then(data => {
+        showPoster(data);
+        showFeatures(data);
+    })
+    .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+
+
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (promo);
+
+
+                    // <div class="features__item">
+                    //     <div class="features__img">
+                    //         <img src="icons/promo/barber-shop.svg" alt="barber-shop">
+                    //     </div>
+                    //     <div class="features__descr">Briefly describe the benefit</div>
+                    //     <div class="features__text">Long text, in two lines, for clarity and detail</div>
+                    // </div>
+                    // <div class="features__item">
+                    //     <div class="features__img">
+                    //         <img src="icons/promo/hair-gel.svg" alt="hair-gel">
+                    //     </div>
+                    //     <div class="features__descr">Briefly describe the benefit</div>
+                    //     <div class="features__text">Long text, in two lines, for clarity and detail</div>
+                    // </div>
+                    // <div class="features__item">
+                    //     <div class="features__img">
+                    //         <img src="icons/promo/beard.svg" alt="beard">
+                    //     </div>
+                    //     <div class="features__descr">Briefly describe the benefit</div>
+                    //     <div class="features__text">Long text, in two lines, for clarity and detail</div>
+                    // </div> 
+      
 
 /***/ }),
 
@@ -367,7 +540,8 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getData": () => (/* binding */ getData)
+/* harmony export */   "getData": () => (/* binding */ getData),
+/* harmony export */   "postData": () => (/* binding */ postData)
 /* harmony export */ });
 
 // функция получения данных с сервера 
@@ -377,8 +551,22 @@ const getData = async (url) => {
     if(!res.ok) {
         throw new Error(`Could not fetch ${url}, status: ${res.status}`);
     }
-    return res.json();
+    return await res.json();
 };
+
+//отправка данных
+const postData = async (url, data) => {
+    const res = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: data
+    });
+
+    return await res.json();
+};
+
 
 
 
@@ -453,6 +641,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_team__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/team */ "./src/js/modules/team.js");
 /* harmony import */ var _modules_about__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/about */ "./src/js/modules/about.js");
 /* harmony import */ var _modules_actionsBlocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/actionsBlocks */ "./src/js/modules/actionsBlocks.js");
+/* harmony import */ var _modules_consultation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/consultation */ "./src/js/modules/consultation.js");
+/* harmony import */ var _modules_promo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/promo */ "./src/js/modules/promo.js");
+
+
 
 
 
@@ -467,9 +659,10 @@ window.addEventListener('DOMContentLoaded', () => {
     (0,_modules_actionsBlocks__WEBPACK_IMPORTED_MODULE_3__.menu)();
     (0,_modules_testimonials__WEBPACK_IMPORTED_MODULE_0__["default"])();
     (0,_modules_team__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    (0,_modules_consultation__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    (0,_modules_promo__WEBPACK_IMPORTED_MODULE_5__["default"])();
     
 });
-
 })();
 
 /******/ })()

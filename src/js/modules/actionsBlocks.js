@@ -5,7 +5,7 @@ const
     blockAbout = document.querySelector('.about'),
     blockTestimonials = document.querySelector('.testimonials'),
     blockPrice = document.querySelector('.price'),
-    //blockConsultation = document.querySelector('.consultation'),
+    
     formConsultation = document.querySelector('.consultation__wrapper'),
     blockContacts = document.querySelector('.contacts'),
     
@@ -28,7 +28,7 @@ function showBlock () {
         blockPrice.classList.remove('hide');
         blockTeam.classList.add('hide');
         blockContacts.classList.remove('contacts-show-consultation');
-        formConsultation.classList.remove('consultation__wrapper-below');
+        //formConsultation.classList.remove('consultation__wrapper-below'); // генерация верстки в функции ошибка
     }
 }
     // show form
@@ -38,7 +38,7 @@ function form () {
 
     function  showContacts () {
         blockContacts.classList.add('contacts-show-consultation');
-        formConsultation.classList.add('consultation__wrapper-below');
+        //formConsultation.classList.add('consultation__wrapper-below'); не работает 
         hideBlock();
         blockTeam.classList.add('hide');
     } 
@@ -57,9 +57,10 @@ function menu () {
         });
     });
 
-    btnPromo.addEventListener('click', () => {
-        document.documentElement.scrollTop = '4490';
-    });
+    // btnPromo.addEventListener('click', () => {
+    //     document.documentElement.scrollTop = '4490';
+    // });
+    // в блоке promo
 }
 
 
