@@ -1,3 +1,44 @@
+import { getData } from "../services/services";
+import { showPoster, showFeatures } from "./promo";
+import { showAbout } from "./about";
+
+// getData('http://localhost:3000')
+//     .then(data => {
+//         const promo = data.promo;   
+//         console.dir(data);
+//         // showPoster(data);
+//         // showFeatures(data);
+//     })
+//     .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+function loadScript (data) {
+    return new Promise ((resolve, reject) => {
+        let src = data;
+        resolve(src);
+    });
+}
+loadScript('http://localhost:3000')
+    .then(data => {
+        let promo = data + '/promo';
+        console.log(promo);
+        getData(promo)
+            .then(data => {
+                showPoster(data);
+                showFeatures(data);
+            })
+            .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+        return data;
+    })
+    .then(data => {
+        let about = data + '/about';
+        console.log(about);
+        getData(about)
+            .then(data => showAbout(data))
+            .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+    });
+
+
+
+
 
 
 const 

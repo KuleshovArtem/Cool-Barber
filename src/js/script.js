@@ -9,12 +9,13 @@ import promo from "./modules/promo";
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    about();
+    // promo();
     form();
     menu();
-    testimonials();
+   // testimonials();
     team();
     consultation();
-    promo();
+    
+    //about();
     
 });

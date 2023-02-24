@@ -10,18 +10,18 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "showAbout": () => (/* binding */ showAbout)
 /* harmony export */ });
 /* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./src/js/services/services.js");
 
 
-function about () {
-    //about
+// function about () {
+//     //about
 
     function showAbout (data) {
         data.forEach(({title, descr, picturesBig, picturesSmall}) => {
-            const element = document.createElement('div');
-            element.classList.add('about__box');
+            const element = document.createElement('section');
+            element.classList.add('about');
             element.innerHTML = `
                 <div class="container">
                     <h2 class="title">${title}</h2>
@@ -60,16 +60,17 @@ function about () {
                     </div>
                 </div>
             `;
-            document.querySelector('.about').append(element);
+            document.querySelector('header').after(element);
         });
-    }
+    // }
     
-    (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/about')
-        .then(data => showAbout(data))
-        .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+    // getData('http://localhost:3000/about')
+    //     .then(data => showAbout(data))
+    //     .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (about);
+// export default about;
+
 
 /***/ }),
 
@@ -86,6 +87,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "menu": () => (/* binding */ menu),
 /* harmony export */   "showBlock": () => (/* binding */ showBlock)
 /* harmony export */ });
+/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./src/js/services/services.js");
+/* harmony import */ var _promo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./promo */ "./src/js/modules/promo.js");
+/* harmony import */ var _about__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./about */ "./src/js/modules/about.js");
+
+
+
+
+// getData('http://localhost:3000')
+//     .then(data => {
+//         const promo = data.promo;   
+//         console.dir(data);
+//         // showPoster(data);
+//         // showFeatures(data);
+//     })
+//     .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+function loadScript (data) {
+    return new Promise ((resolve, reject) => {
+        let src = data;
+        resolve(src);
+    });
+}
+loadScript('http://localhost:3000')
+    .then(data => {
+        let promo = data + '/promo';
+        console.log(promo);
+        (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getData)(promo)
+            .then(data => {
+                (0,_promo__WEBPACK_IMPORTED_MODULE_1__.showPoster)(data);
+                (0,_promo__WEBPACK_IMPORTED_MODULE_1__.showFeatures)(data);
+            })
+            .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+        return data;
+    })
+    .then(data => {
+        let about = data + '/about';
+        console.log(about);
+        (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getData)(about)
+            .then(data => (0,_about__WEBPACK_IMPORTED_MODULE_2__.showAbout)(data))
+            .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+    });
+
+
+
+
 
 
 const 
@@ -238,93 +283,164 @@ function consultation () {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "showFeatures": () => (/* binding */ showFeatures),
+/* harmony export */   "showPoster": () => (/* binding */ showPoster)
 /* harmony export */ });
-/* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./src/js/services/services.js");
+// import { getData } from "../services/services";
 
+// function promo () {
 
-function promo () {
+//     class Poster {
+//         constructor (title, descr, text, parentSelector, ...classes) {
+//             this.title = title;
+//             this.descr = descr;
+//             this.text = text;
+//             this.parent = document.querySelector(parentSelector);
+//         }
+//         render () {
+//             const element = document.createElement('section');
+//             element.classList.add('promo');
+//             element.innerHTML = `
+//                 <div class="container">
+//                     <div class="poster">
+//                         <div class="poster__wrapper">
+//                             <h1 class="poster__title">${this.title}</h1>
+//                             <div class="poster__content">
+//                                 <div class="poster__descr">${this.descr}</div>
+//                                 <div class="poster__text">${this.text}</div>
+//                             </div>
+//                         </div>
+//                         <a class="button" data-promoBtn >Book now</a>
+//                     </div>
+//                 </div>
+//                 <div class="features">
+//                     <div class="container">
+//                         <div class="features__wrapper">
+                            
+//                         </div>   
+//                     </div> 
+//                 </div>
+//             `;
+//             this.parent.insertAdjacentElement("afterend", element);
+//         }
+//     }
 
-    function showPoster(data) {
-        const {title, descr, text} = data.poster;  
-        const element = document.createElement('section');
-        element.classList.add('promo');
-        element.innerHTML = `
-            <div class="container">
-                <div class="poster">
-                    <div class="poster__wrapper">
-                        <h1 class="poster__title">${title}</h1>
-                        <div class="poster__content">
-                            <div class="poster__descr">${descr}</div>
-                            <div class="poster__text">${text}</div>
-                        </div>
-                    </div>
-                    <a class="button" data-promoBtn >Book now</a>
-                </div>
-            </div>
-            <div class="features">
-                <div class="container">
-                    <div class="features__wrapper">
+//     // getData('http://localhost:3000/promo')
+//     //     .then(data => {
+//     //         const {title, descr, text} = data.poster;
+//     //         new Poster(title, descr, text, 'header').render();
+//     //     })
+//     //     .catch(() => console.error('error'));
+
+ 
+//     function showPoster(data) {
+//         const {title, descr, text} = data.poster;  
+//         const element = document.createElement('section');
+//         element.classList.add('promo');
+//         element.innerHTML = `
+//             <div class="container">
+//                 <div class="poster">
+//                     <div class="poster__wrapper">
+//                         <h1 class="poster__title">${title}</h1>
+//                         <div class="poster__content">
+//                             <div class="poster__descr">${descr}</div>
+//                             <div class="poster__text">${text}</div>
+//                         </div>
+//                     </div>
+//                     <a class="button" data-promoBtn >Book now</a>
+//                 </div>
+//             </div>
+//             <div class="features">
+//                 <div class="container">
+//                     <div class="features__wrapper">
                         
-                    </div>   
-                </div> 
-            </div>
-        `;
-        document.querySelector('header').insertAdjacentElement("afterend", element);        
-    }
+//                     </div>   
+//                 </div> 
+//             </div>
+//         `;
+//         //document.querySelector('header').after(element); настроить асинхроность и запустить
+//          document.querySelector('header').insertAdjacentElement("afterend", element);        
+//     }
 
     
-    function showFeatures (data) {
-        const {features} = data;
-        features.forEach(({img, altImg, descr, text}) => {
-            const element = document.createElement('div');
-            element.classList.add('features__item');
-            element.innerHTML = `
-                <div class="features__img">
-                    <img src=${img} alt=${altImg}>
+//     function showFeatures (data) {
+//         const {features} = data;
+//         features.forEach(({img, altImg, descr, text}) => {
+//             const element = document.createElement('div');
+//             element.classList.add('features__item');
+//             element.innerHTML = `
+//                 <div class="features__img">
+//                     <img src=${img} alt=${altImg}>
+//                 </div>
+//                 <div class="features__descr">${descr}</div>
+//                 <div class="features__text">${text}</div>
+//             `;
+//             document.querySelector('.features__wrapper').append(element);  
+//         }); 
+//     }
+
+//     getData('http://localhost:3000')
+//     .then(data => {
+//         showPoster(data);
+//         showFeatures(data);
+//     })
+//     .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+
+// }
+
+function showPoster(data) {
+    const {title, descr, text} = data.poster;  
+    const element = document.createElement('section');
+    element.classList.add('promo');
+    element.innerHTML = `
+        <div class="container">
+            <div class="poster">
+                <div class="poster__wrapper">
+                    <h1 class="poster__title">${title}</h1>
+                    <div class="poster__content">
+                        <div class="poster__descr">${descr}</div>
+                        <div class="poster__text">${text}</div>
+                    </div>
                 </div>
-                <div class="features__descr">${descr}</div>
-                <div class="features__text">${text}</div>
-            `;
-            document.querySelector('.features__wrapper').append(element);  
-        }); 
-    }
-
-    (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.getData)('http://localhost:3000/promo')
-    .then(data => {
-        showPoster(data);
-        showFeatures(data);
-    })
-    .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
-
-
+                <a class="button" data-promoBtn >Book now</a>
+            </div>
+        </div>
+        <div class="features">
+            <div class="container">
+                <div class="features__wrapper">
+                    
+                </div>   
+            </div> 
+        </div>
+    `;
+    //document.querySelector('header').after(element); настроить асинхроность и запустить
+     document.querySelector('header').insertAdjacentElement("afterend", element);        
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (promo);
+
+function showFeatures (data) {
+    const {features} = data;
+    features.forEach(({img, altImg, descr, text}) => {
+        const element = document.createElement('div');
+        element.classList.add('features__item');
+        element.innerHTML = `
+            <div class="features__img">
+                <img src=${img} alt=${altImg}>
+            </div>
+            <div class="features__descr">${descr}</div>
+            <div class="features__text">${text}</div>
+        `;
+        document.querySelector('.features__wrapper').append(element);  
+    }); 
+}
 
 
-                    // <div class="features__item">
-                    //     <div class="features__img">
-                    //         <img src="icons/promo/barber-shop.svg" alt="barber-shop">
-                    //     </div>
-                    //     <div class="features__descr">Briefly describe the benefit</div>
-                    //     <div class="features__text">Long text, in two lines, for clarity and detail</div>
-                    // </div>
-                    // <div class="features__item">
-                    //     <div class="features__img">
-                    //         <img src="icons/promo/hair-gel.svg" alt="hair-gel">
-                    //     </div>
-                    //     <div class="features__descr">Briefly describe the benefit</div>
-                    //     <div class="features__text">Long text, in two lines, for clarity and detail</div>
-                    // </div>
-                    // <div class="features__item">
-                    //     <div class="features__img">
-                    //         <img src="icons/promo/beard.svg" alt="beard">
-                    //     </div>
-                    //     <div class="features__descr">Briefly describe the benefit</div>
-                    //     <div class="features__text">Long text, in two lines, for clarity and detail</div>
-                    // </div> 
-      
+
+
+
+
+
+
 
 /***/ }),
 
@@ -654,13 +770,14 @@ __webpack_require__.r(__webpack_exports__);
 
 window.addEventListener('DOMContentLoaded', () => {
 
-    (0,_modules_about__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    // promo();
     (0,_modules_actionsBlocks__WEBPACK_IMPORTED_MODULE_3__.form)();
     (0,_modules_actionsBlocks__WEBPACK_IMPORTED_MODULE_3__.menu)();
-    (0,_modules_testimonials__WEBPACK_IMPORTED_MODULE_0__["default"])();
+   // testimonials();
     (0,_modules_team__WEBPACK_IMPORTED_MODULE_1__["default"])();
     (0,_modules_consultation__WEBPACK_IMPORTED_MODULE_4__["default"])();
-    (0,_modules_promo__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    
+    //about();
     
 });
 })();

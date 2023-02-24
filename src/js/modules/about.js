@@ -1,12 +1,12 @@
 import { getData } from "../services/services";
 
-function about () {
-    //about
+// function about () {
+//     //about
 
     function showAbout (data) {
         data.forEach(({title, descr, picturesBig, picturesSmall}) => {
-            const element = document.createElement('div');
-            element.classList.add('about__box');
+            const element = document.createElement('section');
+            element.classList.add('about');
             element.innerHTML = `
                 <div class="container">
                     <h2 class="title">${title}</h2>
@@ -45,13 +45,14 @@ function about () {
                     </div>
                 </div>
             `;
-            document.querySelector('.about').append(element);
+            document.querySelector('header').after(element);
         });
-    }
+    // }
     
-    getData('http://localhost:3000/about')
-        .then(data => showAbout(data))
-        .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
+    // getData('http://localhost:3000/about')
+    //     .then(data => showAbout(data))
+    //     .catch(() => console.error('error'));  // написать функционал вывода на страницу ошибки
 }
 
-export default about;
+// export default about;
+export {showAbout};
